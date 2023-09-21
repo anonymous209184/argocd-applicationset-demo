@@ -4,7 +4,7 @@ metadata:
   name: tenants
 spec:
   generators:
-    - git:
+    - git
         repoURL: https://github.com/xsreality/argocd-applicationset-demo.git
         revision: main
         files:
