@@ -13,7 +13,7 @@ spec:
   source:
     repoURL: https://github.com/anonymous209184/argocd-applicationset-demo.git
     targetRevision: main
-    path: top-level-app/be-apps.yaml
+    path: top-level-app
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
