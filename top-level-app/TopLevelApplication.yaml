@@ -13,7 +13,7 @@ spec:
   source:
     repoURL: https://github.com/xsreality/argocd-applicationset-demo.git
     targetRevision: HEAD
-    path: applicationsets
+    path: top-level-app/be-apps.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
