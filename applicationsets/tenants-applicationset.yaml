@@ -1,24 +1,24 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: be-test
+  name: guestbook1
 spec:
   generators:
   - list:
       elements:
-      - cluster: guestbook1
+      - cluster: engineering-dev
         url: https://kubernetes.default.svc
-      - cluster: guestbook2
+      - cluster: engineering-prod
         url: https://kubernetes.default.svc
   template:
     metadata:
-      name: '{{cluster}}-apps'
+      name: '{{cluster}}-guestbook'
     spec:
       project: default
       source:
-        repoURL: https://github.com/anonymous209184/argocd-applicationset-demo.git
+        repoURL: https://github.com/argoproj/applicationset.git
         targetRevision: HEAD
-        path: apps/{{cluster}}/guestbook-set.yaml
+        path: examples/list-generator/guestbook/{{cluster}}
       destination:
         server: '{{url}}'
         namespace: guestbook
