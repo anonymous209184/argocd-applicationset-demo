@@ -12,8 +12,8 @@ spec:
   project: default
   source:
     repoURL: https://github.com/anonymous209184/argocd-applicationset-demo.git
-    targetRevision: argocd-applicationsets
-    path: applicationsets/tenants-applicationset.yaml
+    targetRevision: HEAD
+    path: top-level-app/be-apps.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
