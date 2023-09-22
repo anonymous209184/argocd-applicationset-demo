@@ -1,22 +1,24 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: fe
+  name: guestbook
 spec:
   generators:
-    - list:
-        elements:
-          - name: guestbook1
-          - name: guestbook2
+  - list:
+      elements:
+      - cluster: engineering-dev
+        url: https://kubernetes.default.svc
+      - cluster: engineering-prod
+        url: https://kubernetes.default.svc
   template:
     metadata:
-      name: "{{ .name }}"
+      name: '{{cluster}}-guestbook'
     spec:
       project: default
       source:
-        repoURL: https://github.com/anonymous209184/argocd-applicationset-demo.git
+        repoURL: https://github.com/argoproj/applicationset.git
         targetRevision: HEAD
-        path: apps/{{ .name }}
+        path: examples/list-generator/guestbook/{{cluster}}
       destination:
-        server: https://kubernetes.default.svc
-        namespace: argocd
+        server: '{{url}}'
+        namespace: guestbook
