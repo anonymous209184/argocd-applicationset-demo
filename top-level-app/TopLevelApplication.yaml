@@ -13,7 +13,7 @@ spec:
   source:
     repoURL: https://github.com/anonymous209184/argocd-applicationset-demo.git
     targetRevision: argocd-applicationsets
-    path: applicationsets
+    path: applicationsets/tenants-applicationset.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
